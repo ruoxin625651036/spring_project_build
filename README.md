@@ -11,5 +11,24 @@
   注：  
    添加spring boot的module时，它并未将根目录下的pom.xml文件设置为超级pom文件，即并未成为父子关系；
      但是添加maven的maven-archetype-webapp时，idea则对根目录下的pom.xml自动进行了设置，转换为了父子关系。
+     
+maven父子关系，版本问题，怎样进行处理？
+     
+     （1）父pom.xml中，
+     
+     （2）子pom.xml中，module依赖的version和其他常用的依赖的version怎样设置？ (可在父pom.xml中设置dependencyManagement来进行统一设置)
+     
+ 查看root目录下pom.xml文件和spring_mvc_demo下的pom.xml文件
+     
+     1. 当父pom.xml的version版本变化时，子pom.xml文件的版本应该相应变化
+     
+     2. 关于子pom.xml文件的version怎样编写？
+     
+     ${project.version} 
+     ${project.parent.version}
+     version
+     
+     关于maven： 插件、父子关系
+     
  
  

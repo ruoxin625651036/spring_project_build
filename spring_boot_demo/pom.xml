@@ -5,7 +5,7 @@
 
 	<groupId>com.dyj</groupId>
 	<artifactId>spring_boot_demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>spring_boot_demo</name>
@@ -22,9 +22,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<module-version>1.0-SNAPSHOT</module-version>
 	</properties>
 
 	<dependencies>
+		<!--spring boot jar-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -35,6 +37,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--添加其他module,依赖的jar包必须在私服或者是maven中心仓库上是吗？-->
+		<!--先有mvn install或deploy操作，才有依赖关系，所以它不会因为在同一个project中就会认为这个jar是存在的，
+		   其查找过程还是遵循maven的jar包查找过程
+		-->
+		<dependency>
+			<groupId>com.dyj</groupId>
+			<artifactId>dal</artifactId>
+			<version>${module-version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

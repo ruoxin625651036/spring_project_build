@@ -8,9 +8,49 @@
     <artifactId>spring_project_build</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <org.springframework-version>4.1.4.RELEASE</org.springframework-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <!-- 继承自该项目的所有子项目的默认依赖信息。这部分的依赖信息不会被立即解析,而是当子项目声明一个依赖（必须描述groupID和artifactID信息），如果groupID和artifactID
+    以外的一些信息没有描述，则通过groupID和artifactID匹配到这里的依赖，并使用这里的依赖信息。-->
+    <!--添加dependencyManagenment后，一直出现 Element 'project' cannot have character (children),
+     because this type's content type is element-only.错误  最后发现是注释的地方编写错误，多了一个一些不可用的符号-->
+    <dependencyManagement>
+        <dependencies>
+            <!--spring mvc-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+
+            <!--其他module-->
+            <dependency>
+                <groupId>com.dyj</groupId>
+                <artifactId>dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--junit-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>3.8.1</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>spring_mvc_demo</module>
+        <module>dal</module>
     </modules>
-
 
 </project>
